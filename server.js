@@ -5,6 +5,9 @@ const util = require('util');
 const {readFromFile, writeToFile, readAndAppend} = require('./helpers/fsUtils');
 const routes = require('./routes');
 const uuid = require('./helpers/uuid');
+const noteDB = require('./db/db.json');
+
+
 
 const PORT = process.env.PORT || 3001;
 
@@ -49,6 +52,30 @@ app.post('/api/notes', (req, res) => {
     res.error('Error in adding note.');
   }
 });
+
+// app.get('/api/notes/:id', (req, res) => {
+//   console.info(`${req.method} request recieved for notes.`);
+//   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
+// })
+
+// app.delete('/api/notes/:id', (req, res) => {
+//   const noteToDelete = req.params.text_id;
+//   let DB = noteDB;
+//   const newNotes = [];
+//   fs.readFile('./db/db.json', 'utf8', (err, data) => {
+//     if (err) {
+//       console.error(err);
+//     } else {
+//       const parsedData = JSON.parse(data);
+//       for(notes of parsedData) {
+//         if(notes.text_id !== noteToDelete){
+//           newNotes.push(notes);
+//         }
+//       }
+//       writeToFile('./db/db.json', newNotes);
+//     }
+//   });
+// });
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
