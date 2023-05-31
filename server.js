@@ -1,11 +1,11 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
-const util = require('util');
-const {readFromFile, writeToFile, readAndAppend} = require('./helpers/fsUtils');
+// const fs = require('fs');
+// const util = require('util');
+// const {readFromFile, writeToFile, readAndAppend} = require('./helpers/fsUtils');
 const routes = require('./routes');
-const uuid = require('./helpers/uuid');
-const noteDB = require('./db/db.json');
+// const uuid = require('./helpers/uuid');
+// const noteDB = require('./db/db.json');
 
 
 

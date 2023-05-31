@@ -8,38 +8,47 @@ const noteDB = require('../db/db.json');
 notesRouter.get('/', (req, res) => {
     console.info(`${req.method} request recieved for notes.`);
     readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
-  })
+});
   
 notesRouter.post('/', (req, res) => {
-console.info(`${req.method} request recieved to add a note.`);
+    console.info(`${req.method} request recieved to add a note.`);
 
-const {title, text} = req.body;
+    const {title, text} = req.body;
 
-if (req.body) {
-    const newNote = {
-    title,
-    text,
-    id: uuid()
-    };
+    if (req.body) {
+        const newNote = {
+        title,
+        text,
+        id: uuid()
+        };
 
-    readAndAppend(newNote, './db/db.json');
-    res.json('Note added successfully!')
-} else {
-    res.error('Error in adding note.');
-}
+        readAndAppend(newNote, './db/db.json');
+        res.json('Note added successfully!')
+    } else {
+        res.error('Error in adding note.');
+    }
 });
 
 notesRouter.delete('/:id', (req, res) => {
-const noteToDelete = req.params.id;
-const newNotes = [];
-if (noteToDelete){
-    for(notes of noteDB) {
-    if(notes.id !== noteToDelete){
-        newNotes.push(notes);
+    const noteToDelete = req.params.id;
+    const newNotes = [];
+    if (noteToDelete){
+        for(notes of noteDB) {
+        if(notes.id !== noteToDelete){
+            newNotes.push(notes);
+        }
+        }
+        writeToFile('./db/db.json', newNotes);
+
+        const response = {
+            status: 'success',
+            body: newNotes,
+          };
+      
+          res.json(response);
+    } else {
+        res.json('Error in deleting note.');
     }
-    }
-    writeToFile('./db/db.json', newNotes);
-};
 });
 
 module.exports = notesRouter;
