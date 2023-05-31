@@ -43,7 +43,7 @@ app.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      text_id: uuid()
+      id: uuid()
     };
 
     readAndAppend(newNote, './db/db.json');
@@ -58,24 +58,34 @@ app.post('/api/notes', (req, res) => {
 //   readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 // })
 
-// app.delete('/api/notes/:id', (req, res) => {
-//   const noteToDelete = req.params.text_id;
-//   let DB = noteDB;
-//   const newNotes = [];
-//   fs.readFile('./db/db.json', 'utf8', (err, data) => {
-//     if (err) {
-//       console.error(err);
-//     } else {
-//       const parsedData = JSON.parse(data);
-//       for(notes of parsedData) {
-//         if(notes.text_id !== noteToDelete){
-//           newNotes.push(notes);
-//         }
-//       }
-//       writeToFile('./db/db.json', newNotes);
-//     }
-//   });
-// });
+app.delete('/api/notes/:id', (req, res) => {
+  const noteToDelete = req.params.id;
+  const newNotes = [];
+  if (noteToDelete){
+    for(notes of noteDB) {
+      if(notes.id !== noteToDelete){
+        newNotes.push(notes);
+      }
+    }
+    writeToFile('./db/db.json', newNotes);
+  };
+  // let DB = noteDB;
+  // const newNotes = [];
+  // fs.readFile('./db/db.json', 'utf8', (err, data) => {
+  //   if (err) {
+  //     console.error(err);
+  //   } else {
+  //     const parsedData = JSON.parse(data);
+  //     for(notes of parsedData) {
+  //       if(notes.id !== noteToDelete){
+  //         newNotes.push(notes);
+  //       }
+  //     }
+  //     // const noteString = JSON.stringify(newNotes);
+  //     writeToFile('./db/db.json', newNotes);
+  //   }
+  // });
+});
 
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)

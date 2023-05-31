@@ -2,21 +2,16 @@
     {
         "title": "Test Title",
         "text": "Test text",
-        "text_id": "79ec"
+        "id": "79ec"
     },
     {
         "title": "hi",
         "text": "bob",
-        "text_id": "76ec"
+        "id": "76ec"
     },
     {
-        "title": "note title",
-        "text": "notes",
-        "text_id": "8741"
-    },
-    {
-        "title": "testing",
+        "title": "Testing",
         "text": "123",
-        "text_id": "22cd"
+        "id": "b469"
     }
 ]
