@@ -1,17 +1,12 @@
 [
     {
-        "title": "Testing",
-        "text": "123",
-        "id": "b469"
+        "title": "Doctor's Appointment",
+        "text": "This Friday at 9AM.",
+        "id": "e71c"
     },
     {
-        "title": "george",
-        "text": "of the jungle",
-        "id": "29ea"
-    },
-    {
-        "title": "Pizza",
-        "text": "is tasty",
-        "id": "82a0"
+        "title": "Soccer Game on Saturday",
+        "text": "Wake up early and get ready. Be at pitch by 8AM.",
+        "id": "4f08"
     }
 ]
