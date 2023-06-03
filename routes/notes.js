@@ -36,10 +36,10 @@ notesRouter.delete('/:id', (req, res) => {
     const noteToDelete = req.params.id;
     const newNotes = [];
     if (noteToDelete){
-        for(notes of noteDB) {
-        if(notes.id !== noteToDelete){
-            newNotes.push(notes);
-        }
+        for(let notes of noteDB) {
+            if(notes.id !== noteToDelete){
+                newNotes.push(notes);
+            };
         }
         writeToFile('./db/db.json', newNotes);
 
